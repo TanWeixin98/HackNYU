@@ -1,4 +1,76 @@
 body {
-  padding: 10px;
-  font-family: sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.wrapper {
+  overflow-x: hidden;
+  height: 100vh;
+  width: 100vw;
+  background-image: url(bg1.jpg);
+  background-size: cover;
+}
+
+.heading {
+  display: block;
+  margin: 0 auto;
+  color: white;
+  font-family: 'Passion One', cursive;
+  text-align: center;
+  margin-top: 200px;
+}
+
+.h-heading {
+  font-size: 60px;
+}
+
+.p-heading {
+  font-family: 'Crushed', cursive;
+  font-size: 30px;
+}
+
+.startbtn {
+  margin-top: 200px;
+  width: 100px;
+  font-family: 'Passion One', cursive;
+  border-radius: 20px;
+  color: white;
+}
+
+.topnav {
+  position: relative;
+  top: 0;
+  width: 100%;
+  z-index: 999;
+}
+
+.topnav a {
+  float: left;
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 25px 16px;
+  text-decoration: none;
+  font-size: 20px;
+  line-height: 20px;
+  text-transform: uppercase;
+  font-weight: 500;
+  font-family: 'Passion One', cursive;
+}
+
+.smallnav {
+  float: right;
+  margin-top: 0px;
+  margin-left: 1400px;
+  font-size: 20px;
+}
+
+.topnav a:hover {
+  color: #5bc0de;
+  text-decoration: none;
+}
+
+.navbar-fixed-top.scrolled {
+  background-color: #fff !important;
+  transition: background-color 200ms linear;
 }
