@@ -9,9 +9,11 @@ Template.register.events({
 		password: password
 		},function(err){
 			if(err)
-				console.log(err.reason)});
-			else Router.go('frontPage');
-	}
+				console.log(err.reason);
+			else
+				Router.go('frontPage');
+			});
+		}
 });
 
 Template.logout.events({
