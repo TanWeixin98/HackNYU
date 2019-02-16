@@ -75,6 +75,11 @@ body {
   transition: background-color 200ms linear;
 }
 
+.fade {
+  opacity: 0;
+  transition: opacity 1s;
+}
+
 .hide{
-  opacity:0;
+  display:none
 }
