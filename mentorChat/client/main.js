@@ -1,31 +1,16 @@
+import { Meteor } from 'meteor/meteor';
 import { Template } from 'meteor/templating';
 import { ReactiveVar } from 'meteor/reactive-var';
 
 import './main.html';
-import '/imports/startup/client';
-import { Meteor } from 'meteor/meteor';
+import '/imports/ui/index';
 
-Template.hello.onCreated(function helloOnCreated() {
-  // counter starts at 0
-  this.counter = new ReactiveVar(0);
-});
+if(Meteor.isClient){
 
-Template.hello.helpers({
-  counter() {
-    return Template.instance().counter.get();
-  },
-  isLoggedIn(){
-    return Meteor.user();
-  }
-});
+  Template.login.events({
+    "submit form": function (e, data, tpl) {
+      console.log("Submit button was triggered")
+    }
+  });
 
-Template.login.events({
-  'click #submit'(event, instance) {
-    // increment the counter when button is clicked
-    login.update(this._id, {
-
-      $set: { success: true },
-
-    });
-  },
-});
+}
