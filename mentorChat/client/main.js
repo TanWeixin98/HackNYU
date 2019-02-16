@@ -15,7 +15,15 @@ if(Meteor.isClient){
     "submit form": function (e, data, tpl) {
       // check for valid user
       e.preventDefault();
-      $("form").fadeOut();
+      let userName = $('[name=userName]').val();
+      let password = $('[name=password]').val();
+      Meteor.loginWithPassword(userName, password, function (error) {
+      if (error)
+          console.log(error);
+      else {
+        $("form").fadeOut();
+      }
+      });
       Session.set("firstRun", true);
     }
   });
