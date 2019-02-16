@@ -10,13 +10,12 @@ Template.register.events({
 		},function(err){
 			if(err)
 				console.log(err.reason)});
-			else
-				Router.go('frontPage');
+			else Router.go('frontPage');
 	}
 });
 
 Template.logout.events({
-	'click .logout'function (event){
+	'click .logout':function (event){
 		event.preventDeafult();
 		Meteor.logout();
 		Router.go('login');
@@ -33,7 +32,5 @@ Template.login.events({
 				console.log("wrong password")
 			else
 				Router.go('frontPage')});
-	}	
+	}
 });
-
-
