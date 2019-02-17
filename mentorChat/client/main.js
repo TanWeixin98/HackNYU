@@ -15,14 +15,14 @@ if(Meteor.isClient){
     "submit form": function (e, data, tpl) {
       // check for valid user
       e.preventDefault();
-      var userName = $('[name=userName]').val();
-      var password = $('[name=password]').val();
+      var userName = $('[id=inputUser]').val();
+      var password = $('[id=inputPassword]').val();
       Meteor.loginWithPassword(userName, password, function (error) {
       if (error)
           window.alert("Wrong Password of User Name!");
       else {
         $("form").fadeOut();
-	
+
       Session.set("firstRun", true);
       }
       });
