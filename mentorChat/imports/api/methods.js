@@ -13,7 +13,7 @@ Meteor.methods({
         return roomId;
     },
     'chatroom.history'(roomId){
-        return Rooms.find({name: roomId}).sort({createdAt: -1});
+        return Rooms.find({name: roomId}).log;
     }
 
 });

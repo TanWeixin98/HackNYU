@@ -57,6 +57,27 @@
       <div>Chat Bubble 3</div>
       <div>Chat Bubble 4</div>
       <div>Chat Bubble 5</div>
+
+      <div class="current" style="height:600px; width: 800px; border:5px solid red">
+        <form id="message-body">
+        <header name={{room.name}}>Chat room name</header>
+        <h2>big window showing current chatroom</h2>
+        <ul>
+          {{#each history}}
+            {{>past-msg}}
+          {{/each}}
+        </ul>
+        <br>
+          <input type="text" name="text-message" placeholder="Send a message"><input type="submit" value="send">
+        </form>
+      </div>
     </div>
   {{/if}}
+</template>
+
+<template name="past-msg">
+  <li>{{this.user}} {{this.createdAt}}
+    <br>
+    {{this.body}}
+  </li>
 </template>
