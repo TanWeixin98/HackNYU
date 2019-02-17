@@ -7,10 +7,29 @@ import './main.html';
 import '/imports/ui/index';
 
 if(Meteor.isClient){
-  Meteor.startup(function(){
-    Rooms.remove({});
-    Meteor.apply('chatroom.create', ['testChatRoom'], { returnStubValue: true });
 
+  Meteor.methods({
+    'chatroom.create'(room) {
+      return Rooms.insert(room);
+    },
+    'message.create'(msg, roomId) {
+      return Rooms.update({ name: roomId }, { $push: { log: { user: this.userId, body: msg, createdAt: new Date() } } });
+    },
+    'getCurrentRoomName'(roomId) {
+      return Session.set("chat_name", Rooms.find({ _id: roomId })[0].name);
+    },
+    'chatroom.history'(roomId) {
+      return Rooms.find({ name: roomId }).log;
+    }
+
+  });
+  Meteor.startup(function(){
+
+    $('.chat_list').each(function (i) {
+      Meteor.call('chatroom.create', i.toString(), function (err, res) {
+        console.log(err, res);
+      });
+    });
   });
   Template.login.helpers({
     isFirstRun(){
@@ -31,6 +50,18 @@ if(Meteor.isClient){
       else return false;
     }
   });
+
+  Template.list.events({
+    "click .chat_list": function(e){
+      let chatSelection = $(e.currentTarget);
+      if (chatSelection.hasClass("active_chat")) return;
+      $('.inbox_chat').find('.active_chat').removeClass('active_chat');
+      chatSelection.addClass('active_chat');
+      let roomIndex = $('.chat_list').index(chatSelection);
+      console.log(Rooms.find().fetch());
+      Session.set("chat_id", Rooms.find().fetch()[roomIndex]._id);
+    }
+  })
 Accounts.createUser({username:"wei",password:"tan"});
 Accounts.createUser({username:"wei2",password:"tan"});
 Accounts.createUser({username:"wei1",password:"tan"});
@@ -57,32 +88,17 @@ Accounts.createUser({username:"wei4",password:"tan"});
     "submit #message-body": function (e, data, tpl) {
       // check for valid user
       e.preventDefault();
-      let roomName = Meteor.apply('getCurrentRoom', ['testChatRoom'], {returnStubValue: true});
-      Meteor.call('message.create', $('input[name=text-message]').val(), roomName,function(result){
+      // let roomName = Meteor.apply('getCurrentRoom', ['testChatRoom'], {returnStubValue: true});
+      Meteor.call('message.create', $('input[name=text-message]').val(), Session.get('chat_name'),function(result){
         Session.set("history", Rooms.find({ name: roomName }).fetch()[0]);
         return;
       });
       $('input[name=text-message]').val("");
     }
   });
-  Meteor.methods({
-    'chatroom.create'(room) {
-      return Rooms.insert(room);
-    },
-    'message.create'(msg, roomId) {
-      return Rooms.update({ name: roomId }, { $push: { log: { user: this.userId, body: msg, createdAt: new Date() } } });
-    },
-    'getCurrentRoom'(roomId) {
-      return roomId;
-    },
-    'chatroom.history'(roomId) {
-      return Rooms.find({ name: roomId }).log;
-    }
-
-  });
 
   Tracker.autorun(() => {
-    if (handle.ready())
       Meteor.subscribe('rooms', Session.get('roomId'));
-  });
+});
+
 }

@@ -6,25 +6,22 @@ Meteor.startup(function(){
     return Rooms.remove({});
 });
 
+
 Meteor.methods({
-    'chatroom.create'(room){
-        Rooms.insert({name:room});
-        return Rooms.find().fetch();
+    'chatroom.create'(room) {
+        return Rooms.insert(room);
     },
-    'message.create'(msg, roomId){
-        Rooms.upsert({name: roomId}, {$push: {log: {user: this.userId, body: msg, createdAt: new Date()}}});
-        console.log(Rooms.find().fetch());
-        return Rooms.find().fetch();
+    'message.create'(msg, roomId) {
+        return Rooms.update({ name: roomId }, { $push: { log: { user: this.userId, body: msg, createdAt: new Date() } } });
     },
-    'getCurrentRoom'(roomId){
-        return roomId;
+    'getCurrentRoomName'(roomId) {
+        return Session.set("chat_name", Rooms.find({ _id: roomId })[0].name);
     },
-    'chatroom.history'(roomId){
-        return Rooms.find({name: roomId}).log;
+    'chatroom.history'(roomId) {
+        return Rooms.find({ name: roomId }).log;
     }
 
 });
-
 Meteor.publish('rooms', function () {
     Meteor._sleepForMs(3000);
     return Rooms.find();
