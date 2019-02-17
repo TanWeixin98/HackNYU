@@ -13,7 +13,7 @@ Meteor.methods({
     },
     'message.create'(msg, roomId){
         Rooms.upsert({name: roomId}, {$push: {log: {user: this.userId, body: msg, createdAt: new Date()}}});
-        console.log(Rooms.find().fetch()[0].log[0].body);
+        console.log(Rooms.find().fetch());
         return Rooms.find().fetch();
     },
     'getCurrentRoom'(roomId){

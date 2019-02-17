@@ -8,6 +8,11 @@ import './main.html';
 import '/imports/ui/index';
 let arr = [];
 if(Meteor.isClient){
+  Meteor.startup(function(){
+    Rooms.remove({});
+    Meteor.apply('chatroom.create', ['testChatRoom'], { returnStubValue: true });
+
+  });
   Template.login.helpers({
     isFirstRun(){
       return !Session.get("firstRun");
@@ -15,16 +20,24 @@ if(Meteor.isClient){
     history(){
       console.log(Session.get("history"));
       return Session.get("history");
-    }
+    },
+    chatTitle: Session.get("title")
   });
 
+  Template.past_msg.helpers({
+
+    isEqual(c1, c2) {
+      if(c1.toString().equals(c2)) return true;
+      else return false;
+    }
+  });
 Accounts.createUser({username:"wei",password:"tan"});
 Accounts.createUser({username:"wei2",password:"tan"});
 Accounts.createUser({username:"wei1",password:"tan"});
 Accounts.createUser({username:"wei3",password:"tan"});
 Accounts.createUser({username:"wei4",password:"tan"});
 
-  
+
 
   Template.login.events({
     "submit #login": function (e, data, tpl) {
@@ -37,8 +50,6 @@ Accounts.createUser({username:"wei4",password:"tan"});
           window.alert("Wrong Password of User Name!");
       else {
         $("#login-page").fadeOut();
-        Meteor.call('chatroom.create', 'testChatRoom');
-
         Session.set("firstRun", true);
       }
       });
