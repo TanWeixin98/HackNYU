@@ -304,3 +304,6 @@ img{ max-width:100%;}
 .new-font {
   font-family: 'Cairo', sans-serif;
 }
+.background-color {
+  background-image: url(bg1.jpg);
+}
