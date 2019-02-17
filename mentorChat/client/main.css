@@ -160,7 +160,7 @@ body {
 }
 
 .brand-logo {
-  float: right;
+  float: left;
 }
 
 .container{max-width:1170px; margin:auto;}
@@ -295,7 +295,12 @@ img{ max-width:100%;}
   width: 33px;
 }
 .messaging { padding: 0 0 50px 0;}
+
 .msg_history {
   height: 516px;
   overflow-y: auto;
+}
+
+.new-font {
+  font-family: 'Cairo', sans-serif;
 }

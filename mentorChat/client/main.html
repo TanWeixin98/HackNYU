@@ -13,6 +13,7 @@
   <script src="index.js"></script>
   <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" type="text/css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Cairo" rel="stylesheet">
 </head>
 
 <body>
@@ -23,37 +24,38 @@
   {{#if isFirstRun}}
   <div id="login-page" class="container-fluid">
     <div class="row no-gutter">
-      <div class="d-none d-md-flex col-md-4 col-lg-6 bg-image"></div>
       <div class="col-md-8 col-lg-6">
         <img class = "brand-logo" src="logo_transparent.png" width = "100" height="100">
         <div class="login d-flex align-items-center py-5">
           <div class="container">
             <div class="row">
               <div class="col-md-9 col-lg-8 mx-auto">
-                <h3 class="login-heading mb-4">Welcome to MENTORme.</h3>
-                <h4 class="login-heading mb-4">Please sign in</h4>
+                <h3 class="login-heading mb-4">Welcome to MENTORme!</h3>
+                <h4 class="login-heading mb-4">Please sign in.</h4>
                 <form>
-                  <label for="inputUser">Username</label>
+                  <label for="inputUser">Username:</label>
                   <div class="form-label-group">
                     <input name="userName" type="text" id="inputUser" class="form-control" placeholder="Username" required autofocus  style = "margin: top;">
                   </div>
-                    <label for="inputPassword">Password</label>
+                    <label for="inputPassword">Password:</label>
                   <div class="form-label-group">
                     <input name="password" type="password" id="inputPassword" class="form-control" placeholder="Password" required autofocus style = "margin: top">
                   </div>
-                  <button class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2 submit" type="submit">Log In</button>
+                  <button class="btn btn-lg btn-outline-primary btn-block btn-login text-uppercase font-weight-medium mb-2 submit" type="submit" style="margin-top: 30px;">Log In</button>
                 </form>
               </div>
             </div>
           </div>
         </div>
       </div>
+      <div class="d-none d-md-flex col-md-4 col-lg-6 bg-image"></div>
     </div>
   </div>
   {{else}}
-    <div class="container">
-<h3 class=" text-center">Messaging</h3>
-<div class="messaging">
+    <div class="container new-font">
+    <img class = "brand-logo" src="logo_transparent.png" width = "100" height="100">
+    <h3 class=" text-center" style = "padding-top: 30px;">Messaging</h3>
+    <div class="messaging">
       <div class="inbox_msg">
         <div class="inbox_people">
           <div class="headind_srch">
@@ -71,7 +73,7 @@
           <div class="inbox_chat">
             <div class="chat_list active_chat">
               <div class="chat_people">
-                <div class="chat_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div>
+                <div class="chat_img"> <img src="boy.png" alt="sunil"> </div>
                 <div class="chat_ib">
                   <h5>Rifat Khan<span class="chat_date">Feb 16</span></h5>
                   <p>Test Text</p>
@@ -80,7 +82,7 @@
             </div>
             <div class="chat_list">
               <div class="chat_people">
-                <div class="chat_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div>
+                <div class="chat_img"> <img src="boy.png" alt="sunil"> </div>
                 <div class="chat_ib">
                   <h5>Rifat Khan <span class="chat_date">Feb 16</span></h5>
                   <p>Test text</p>
@@ -89,7 +91,7 @@
             </div>
             <div class="chat_list">
               <div class="chat_people">
-                <div class="chat_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div>
+                <div class="chat_img"> <img src="boy.png" alt="sunil"> </div>
                 <div class="chat_ib">
                   <h5>Rifat Khan <span class="chat_date">Feb 16</span></h5>
                   <p>Test Text</p>
@@ -98,7 +100,7 @@
             </div>
             <div class="chat_list">
               <div class="chat_people">
-                <div class="chat_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div>
+                <div class="chat_img"> <img src="boy.png" alt="sunil"> </div>
                 <div class="chat_ib">
                   <h5>Rifat Khan <span class="chat_date">Feb 16</span></h5>
                   <p>Test Text</p>
@@ -107,7 +109,7 @@
             </div>
             <div class="chat_list">
               <div class="chat_people">
-                <div class="chat_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div>
+                <div class="chat_img"> <img src="boy.png" alt="sunil"> </div>
                 <div class="chat_ib">
                   <h5>Rifat Khan <span class="chat_date">Feb 16</span></h5>
                   <p>Test Text</p>
@@ -116,7 +118,7 @@
             </div>
             <div class="chat_list">
               <div class="chat_people">
-                <div class="chat_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div>
+                <div class="chat_img"> <img src="boy.png" alt="sunil"> </div>
                 <div class="chat_ib">
                   <h5>Rifat Khan <span class="chat_date">Feb 16</span></h5>
                   <p>Test Text</p>
@@ -125,7 +127,7 @@
             </div>
             <div class="chat_list">
               <div class="chat_people">
-                <div class="chat_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div>
+                <div class="chat_img"> <img src="boy.png" alt="sunil"> </div>
                 <div class="chat_ib">
                   <h5>Rifat Khan <span class="chat_date">Feb 16</span></h5>
                   <p>Test Text</p>
@@ -137,7 +139,7 @@
         <div class="mesgs">
           <div class="msg_history">
             <div class="incoming_msg">
-              <div class="incoming_msg_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div>
+              <div class="incoming_msg_img"> <img src="boy.png" alt="sunil"> </div>
               <div class="received_msg">
                 <div class="received_withd_msg">
                   <p>Test Text</p>
@@ -150,7 +152,7 @@
                 <span class="time_date"> 11:01 AM    |    June 9</span> </div>
             </div>
             <div class="incoming_msg">
-              <div class="incoming_msg_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div>
+              <div class="incoming_msg_img"> <img src="boy.png" alt="sunil"> </div>
               <div class="received_msg">
                 <div class="received_withd_msg">
                   <p>Test Text</p>
@@ -163,7 +165,7 @@
                 <span class="time_date"> 11:01 AM    |    Today</span> </div>
             </div>
             <div class="incoming_msg">
-              <div class="incoming_msg_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div>
+              <div class="incoming_msg_img"> <img src="boy.png" alt="sunil"> </div>
               <div class="received_msg">
                 <div class="received_withd_msg">
                   <p>Test Text</p>
