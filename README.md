@@ -1,7 +1,7 @@
 # MentorMe
 
 #Getting Started
-Young people are impressionable individuals, capable of learning quickly and thinking creatively. Our software provides a convenient and seamless way for young people to communicate with experienced individuals who will help the learn.
+Young people are impressionable individuals, capable of learning quickly and thinking creatively. Our software provides a convenient and seamless way for young people to communicate with experienced individuals who will help them learn.
 
 ## Getting Started 
 
