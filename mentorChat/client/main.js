@@ -3,10 +3,9 @@ import { Template } from 'meteor/templating';
 // import { ReactiveVar } from 'meteor/reactive-var';
 import { Rooms } from '../imports/db/chatrooms';
 
-
 import './main.html';
 import '/imports/ui/index';
-let arr = [];
+
 if(Meteor.isClient){
   Meteor.startup(function(){
     Rooms.remove({});
@@ -31,6 +30,8 @@ if(Meteor.isClient){
       console.log(typeof c1+" "+ c1);
       console.log(c2);
       if(c1.toString().equals(c2)) return true;
+      if(!c1 || !c2._id) return false;
+      if(c1 === c2._id) return true;
       else return false;
     }
   });
@@ -98,6 +99,7 @@ Accounts.createUser({username:"wei4",password:"tan"});
   });
 
   Tracker.autorun(() => {
-    Meteor.subscribe('rooms', Session.get('roomId'));
+    if (handle.ready())
+      Meteor.subscribe('rooms', Session.get('roomId'));
   });
 }
