@@ -1,5 +1,4 @@
 import { Meteor } from 'meteor/meteor';
-<<<<<<< HEAD
 import { check, Match } from 'meteor/check';
 import { Rooms } from '../imports/db/chatrooms';
 
@@ -28,8 +27,4 @@ Meteor.methods({
 
 Meteor.publish('rooms', function () {
     return Rooms.find();
-=======
-Meteor.startup(() => {
-  // code to run on server at startup
->>>>>>> f08daeddb5e4b0ee80036ad16ab055d26d62aabc
 });
