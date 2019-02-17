@@ -3,6 +3,7 @@ import { Template } from 'meteor/templating';
 // import { ReactiveVar } from 'meteor/reactive-var';
 import { Rooms } from '../imports/db/chatrooms';
 
+
 import './main.html';
 import '/imports/ui/index';
 let arr = [];
@@ -16,6 +17,15 @@ if(Meteor.isClient){
       return Session.get("history");
     }
   });
+
+Accounts.createUser({username:"wei",password:"tan"});
+Accounts.createUser({username:"wei2",password:"tan"});
+Accounts.createUser({username:"wei1",password:"tan"});
+Accounts.createUser({username:"wei3",password:"tan"});
+Accounts.createUser({username:"wei4",password:"tan"});
+
+  
+
   Template.login.events({
     "submit #login": function (e, data, tpl) {
       // check for valid user
