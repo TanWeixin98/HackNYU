@@ -159,6 +159,7 @@
 <template name="past_msg">
   {{#with history}}
     {{#each item in log}}
+    {{#if Template.subscriptionsReady}}
       {{#if isEqual item.user currentUser}}
       <div class="outgoing_msg">
         <div class="sent_msg">
@@ -178,6 +179,9 @@
         </div>
       </div>
       {{/if}}
+    {{else}}
+      <div>Loading...</div>
+    {{/if}}
     {{/each}}
   {{/with}}
 </template>

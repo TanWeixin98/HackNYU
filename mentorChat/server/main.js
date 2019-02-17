@@ -26,5 +26,6 @@ Meteor.methods({
 });
 
 Meteor.publish('rooms', function () {
+    Meteor._sleepForMs(3000);
     return Rooms.find();
 });
