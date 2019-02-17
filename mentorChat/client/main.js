@@ -31,6 +31,7 @@ if(Meteor.isClient){
       });
     });
   });
+
   Template.login.helpers({
     isFirstRun(){
       return !Session.get("firstRun");
@@ -45,6 +46,9 @@ if(Meteor.isClient){
   Template.past_msg.helpers({
 
     isEqual(c1, c2) {
+      console.log(typeof c1+" "+ c1);
+      console.log(c2);
+      if(c1.toString().equals(c2)) return true;
       if(!c1 || !c2._id) return false;
       if(c1 === c2._id) return true;
       else return false;
@@ -88,8 +92,21 @@ Accounts.createUser({username:"wei4",password:"tan"});
     "submit #message-body": function (e, data, tpl) {
       // check for valid user
       e.preventDefault();
-      // let roomName = Meteor.apply('getCurrentRoom', ['testChatRoom'], {returnStubValue: true});
-      Meteor.call('message.create', $('input[name=text-message]').val(), Session.get('chat_name'),function(result){
+      if ($('input[name=text-message]').val()==="") return;
+      let roomName = Meteor.apply('getCurrentRoom', ['testChatRoom'], {returnStubValue: true});
+      Meteor.call('message.create', $('input[name=text-message]').val(), roomName,function(result){
+        Session.set("history", Rooms.find({ name: roomName }).fetch()[0]);
+        return;
+      });
+      $('input[name=text-message]').val("");
+    },
+
+    "click #send_btn": function (e, data, tpl) {
+      // check for valid user
+      e.preventDefault();
+      if ($('input[name=text-message]').val()==="") return;
+      let roomName = Meteor.apply('getCurrentRoom', ['testChatRoom'], {returnStubValue: true});
+      Meteor.call('message.create', $('input[name=text-message]').val(), roomName,function(result){
         Session.set("history", Rooms.find({ name: roomName }).fetch()[0]);
         return;
       });
