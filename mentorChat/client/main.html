@@ -1,6 +1,7 @@
 <head>
 
   <title>MENTORme</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
     crossorigin="anonymous">
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
@@ -22,6 +23,7 @@
     <div class="row no-gutter">
       <div class="d-none d-md-flex col-md-4 col-lg-6 bg-image"></div>
       <div class="col-md-8 col-lg-6">
+        <img class = "brand-logo" src="logo_transparent.png" width = "100" height="100">
         <div class="login d-flex align-items-center py-5">
           <div class="container">
             <div class="row">
@@ -31,12 +33,12 @@
                 <form>
                   <div class="form-label-group">
                     <label for="inputUser">Enter Username</label>
-                    <input name="userName" type="text" id="inputUser" class="form-control" placeholder="Username" required autofocus>
+                    <input type="text" id="inputUser" class="form-control" placeholder="Username" required autofocus>
                   </div>
 
                   <div class="form-label-group" style="padding-bottom: 20px;">
                     <label for="inputPassword">Enter Password</label>
-                    <input name="password" type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+                    <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
                   </div>
                   <button class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2 submit" type="submit">Log
                     in</button>
