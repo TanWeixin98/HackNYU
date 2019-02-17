@@ -10,7 +10,7 @@
     integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
   <link rel="shortcut icon" href="favicon.ico" />
   <link rel="stylesheet" href="main.css">
-  <script src="index.js"></script>
+  <script src="/imports/ui/index.js"></script>
 </head>
 
 <body>
@@ -30,7 +30,7 @@
               <div class="col-md-9 col-lg-8 mx-auto">
                 <h3 class="login-heading mb-4">Welcome to MENTORme.</h3>
                 <h4 class="login-heading mb-4">Please sign in</h4>
-                <form>
+                <form id="login">
                   <div class="form-label-group">
                     <label for="inputUser">Enter Username</label>
                     <input name="userName" type="text" id="inputUser" class="form-control" placeholder="Username" required autofocus>
@@ -60,24 +60,25 @@
 
       <div class="current" style="height:600px; width: 800px; border:5px solid red">
         <form id="message-body">
-        <header name={{room.name}}>Chat room name</header>
-        <h2>big window showing current chatroom</h2>
-        <ul>
-          {{#each history}}
-            {{>past-msg}}
-          {{/each}}
-        </ul>
-        <br>
-          <input type="text" name="text-message" placeholder="Send a message"><input type="submit" value="send">
+          <header name={{room.name}}>Chat room name</header>
+          <h2>big window showing current chatroom</h2>
+          <ul>
+
+              {{>past_msg history=history}}
+
+          </ul>
+          <br>
+            <input type="text" name="text-message" placeholder="Send a message"><input type="submit" value="send">
         </form>
       </div>
     </div>
   {{/if}}
 </template>
 
-<template name="past-msg">
-  <li>{{this.user}} {{this.createdAt}}
-    <br>
-    {{this.body}}
-  </li>
+<template name="past_msg">
+  {{#with history}}
+    {{#each item in log}}
+      <li>{{item.body}}</li>
+    {{/each}}
+  {{/with}}
 </template>
