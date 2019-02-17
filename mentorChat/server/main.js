@@ -3,7 +3,15 @@ import { check, Match } from 'meteor/check';
 import { Rooms } from '../imports/db/chatrooms';
 
 Meteor.startup(function(){
-    return Rooms.remove({});
+
+    Rooms.remove({});
+
+    for(let i = 0; i <7; i++){
+        Meteor.call('chatroom.create', i.toString(), function (err, res) {
+            console.log(res);
+        });
+    }
+    return;
 });
 
 
@@ -12,7 +20,7 @@ Meteor.methods({
         return Rooms.insert(room);
     },
     'message.create'(msg, roomId) {
-        return Rooms.update({ name: roomId }, { $push: { log: { user: this.userId, body: msg, createdAt: new Date() } } });
+        return Rooms.update({ _id: roomId }, { $push: { log: { user: this.userId, body: msg, createdAt: new Date() } } });
     },
     'getCurrentRoomName'(roomId) {
         return Session.set("chat_name", Rooms.find({ _id: roomId })[0].name);
